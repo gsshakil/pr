@@ -153,6 +153,12 @@ ul.tasks li button.btn-default{
 
 /*================List Card=====================*/
 
+.jumborton{
+    text-align: center;
+    padding: 50px;
+    background-color: #f4f4f4;
+}
+
 .list-card-wrapper{
     background-color: #fff;
     /* margin-top: 70px; */
