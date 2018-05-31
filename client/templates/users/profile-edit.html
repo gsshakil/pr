@@ -1,0 +1,24 @@
+<template name="Edit_profile">
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <h3>Update Profile</h3>
+                    <hr>
+                    <form class="update-profile" action="">                        
+                        <div class="form-group">
+                            <label for="name"></label>                    
+                            <input type="text" class="form-control" name="name" id="name" value="{{#with profile}}{{name}}{{/with}}" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="about"></label>                    
+                            <textarea class="form-control" rows="4" id="about" name="about" value="{{#with profile}}{{about}}{{/with}}" placeholder="Tell about yourself" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+

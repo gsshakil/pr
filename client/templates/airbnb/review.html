@@ -1,0 +1,55 @@
+<template name="Reviews">
+    
+    <h4>{{reviewCount}} Reviews</h4>
+    <hr>
+
+    {{#each reviews}}
+    <div class="row">
+        <div class="col-md-3">
+            <div class="user-thumbnail">            
+                <img src="img/user.jpg" class="profile-pic" alt="">
+                <p><a href="#">{{userName}}</a></p>                
+            </div>
+        </div>
+        <div class="col-md-9">
+            <p>{{reviewText}}</p>
+            {{#if currentUser}}
+                <a href="#" class="btn-delete"><i class="fa fa-remove"></i></a>
+            {{/if}}
+            <br>
+            <span class="date"><small>{{formateDate createdAt}}</small></span>            
+            <a href="#" class="btn-helpful pull-right"><i class="fa fa-thumbs-up"></i><small> Helpfull</small></a>
+        </div>
+    </div>
+    <hr>
+    {{/each}}
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="user-thumb-add-review pull-right">
+                <div class="user-thumbnail">         
+                    <img src="img/user.jpg" class="profile-pic" alt="">
+                    {{#with userProfile}}                                               
+                        <p><a href="#">{{name}}</a></p>                
+                    {{/with}}    
+                </div>
+            </div>         
+        </div>
+        <div class="col-md-9">
+            {{#if currentUser}}
+                {{> Add_reivew}}
+            {{/if}}
+        </div>
+    </div>
+</template>
+
+<template name="Add_reivew">
+    <form class="add-review" action="">
+        <div class="form-group">
+            <label for="review-text"></label>                    
+            <textarea class="form-control" rows="4" id="review-text" name="reviewText" placeholder="Write a Reivew" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Addd</button>
+    </form>
+</template>
+

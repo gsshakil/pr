@@ -1,0 +1,327 @@
+<template name="Place_detail">
+
+    {{#with places}}        
+
+    <div class="place-detail-images">
+        {{> Place_detail_slider}}
+    </div>
+
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">                    
+                    <div class="place-menu">
+                        <ul class="list-inline">
+                            <li><a href="#" class="btn-overview"><h4>Overview</h4></a></li> 
+                            <li><a href="#" class="btn-reviews"><h4>Reviews</h4></a></li> 
+                            <li><a href="#" class="btn-host"><h4>The Host</h4></a></li> 
+                            <li><a href="#" class="btn-location"><h4>Location</h4></a></li>
+                            {{#if currentUser}}                            
+                                <li class="pull-right"><a href="/update-place/{{_id}}" class="btn btn-default"><i class="fa fa-edit"></i></a>
+                                <a href="#" class="btn btn-danger btn-remove"><i class="fa fa-remove"></i></a></li> 
+                            {{/if}}
+                        </ul>
+                    </div>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="host-info">
+                                <div class="user-thumbnail">
+                                    {{#with host}}
+                                        <img src="img/user.jpg" class="profile-pic" alt="">
+                                        <p><a href="#">{{name}}</a></p>
+                                    {{/with}}
+                                </div>     
+                            </div> 
+                        </div>
+                        <div class="col-md-8">
+                            <div class="place-info" id="overview">
+                                <h3>{{placeName}}</h3>
+                                <small>{{city}}, {{state}}, {{country}}</small>
+                                <br><br>
+                                <ul class="list-inline">
+                                    <li><i class="fa fa-home fa-2x"></i><p>{{placeType}} </p></li>                                
+                                    <li><i class="fa fa-users fa-2x"></i><p>{{numberOfGuest}} Guests </p></li>                                
+                                    <li><i class="fa fa-map-o fa-2x"></i><p>{{numberOfBedrooms}} Bedroom  </p></li>                                
+                                    <li><i class="fa fa-bed fa-2x"></i><p>{{numberOfBeds}} Bed</p></li>                                
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>    
+
+                    <script>
+                        $(".btn-overview").click(function() {
+                            $('html, body').animate({
+                                scrollTop: $("#overview").offset().top - 20
+                            }, 500);
+                        });
+                        $(".btn-reviews").click(function() {
+                            $('html, body').animate({
+                                scrollTop: $("#reviews").offset().top - 20
+                            }, 500);
+                        });
+                        $(".btn-host").click(function() {
+                            $('html, body').animate({
+                                scrollTop: $("#host").offset().top - 20
+                            }, 500);
+                        });
+                        $(".btn-location").click(function() {
+                            $('html, body').animate({
+                                scrollTop: $("#location").offset().top - 20
+                            }, 500);
+                        });
+                    </script>
+    
+                    <h4>About this listing</h4>       
+                    <p>{{ summery }}</p>
+                    <hr>      
+
+                    {{#if $eq isBusinessReady 'TRUE'}}                                                  
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p>Business travel</p>
+                            </div>
+                            <div class="col-md-9">                              
+                                <p><i class="fa fa-briefcase"></i> This listing has essential business travel amenities. <a href="#">Learn more</a></p>
+                            </div>
+                        </div>
+                        <hr>                            
+                    {{/if}}
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p>The space</p>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>Accomodates: {{numberOfGuest}}</p>
+                                    <p>Bathrooms: {{numberOfBathrooms}}</p>
+                                    <p>Bed Types: {{bedType}}</p>
+                                    <p>Bedroom: {{numberOfBedrooms}}</p>
+                                    <p>Beds: {{numberOfBeds}}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>Check In: {{numberOfGuest}}</p>
+                                    <p>Check Out: {{numberOfGuest}}</p>
+                                    <p>Property type: {{propertyType}}</p>
+                                    <p>Room type: {{placeType}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p>Amenites</p>
+                        </div>
+                        <div class="col-md-9">
+                            {{#each amenities}}
+                                <p>{{this}}</p>
+                            {{/each}}
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p>Prices</p>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>Extra people: {{perExtraPeople}} {{currency}}</p>
+                                    <p>Cleaning Fee: {{cleaningFee}} {{currency}}</p>
+                                    <p>Weekly Discount: {{WeeklyDiscount}} {{currency}}</p>                                     
+                                </div>
+                                <div class="col-md-6">
+                                    <p>Monthly Discount: {{monthlyDiscount}}%</p>                                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p>Description</p>
+                        </div>
+                        <div class="col-md-9">
+                            <p>{{description}}</p>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p>House Rules</p>
+                        </div>
+                        <div class="col-md-9">
+                            {{#each houseRules}}
+                                <p>{{this}}</p>
+                            {{/each}}
+                            
+                            {{#each optHouseRules}}
+                                <p>{{summery}}</p>
+                            {{/each}}
+
+
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p>Safety Features</p>
+                        </div>
+                        <div class="col-md-9">
+                            {{#each safetyFeatures}}
+                                <p>{{this}}</p>
+                            {{/each}}
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p>Availability</p>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>{{stayDurationMinNight}} nights</strong> minimum stay</p>                                        
+                                </div>
+                                <div class="col-md-6">
+                                    <p><a href="#">View Calender</a> </p>                                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
+
+                    <!--Reviews-->
+                    <div class="reviews" id="reviews">
+                        {{> Reviews }}
+                    </div>
+                    <hr>
+
+                    <div class="host" id="host">
+                        <h4>Your Host</h4>
+                        <hr>
+                        {{#with host}}
+                            <div class="row">
+                                <div class="col-md-3">
+                                    {{> User_thumbnail}}
+                                </div>
+                                <div class="col-md-9">
+                                    <h2>{{name}}</h2>
+                                    <p>{{about}}</p>
+                                    
+                                    <a href="#" class="btn btn-danger">Contact host</a>
+
+                                </div>
+                            </div>
+                            {{/with}}
+                    </div>
+                    <hr>
+                </div>
+            </div>
+
+            <!--Location Map-->
+                {{> Location_map}}                         
+            <hr>
+
+            <!--Similar listing -->
+            {{> Similar_listing}}
+            
+            <!--Footer-->
+            {{> Airbnb_footer}}
+                        
+        </div>
+    </div>
+
+    {{/with}}                        
+
+</template>
+
+
+
+<template name="Place_detail_slider">
+    <div class="slider">
+        <div class='owl-carousel'>
+            {{#each pictures}}
+                <div><img src="http://localhost:3000/cdn/storage/Images/{{filename}}/original/{{filename}}.png" width="100%" alt=""></div>
+            {{/each}}
+        </div>            
+    </div>
+    <script>
+        $('.owl-carousel').owlCarousel({
+            items: 1,
+            loop: true,
+            nav: true,
+            lazyLoad: true,
+            navText: ['']
+        });
+    </script>  
+</template>
+
+<template name="Location_map">
+    <div class="location-map" id="location">    
+        <div id="location-map"></div>
+        <script>
+            function initMap() {
+                var dhaka = {lat: 23.8103, lng: 90.4125};
+                var map = new google.maps.Map(document.getElementById('location-map'), {
+                    zoom: 14,
+                    zoomControl: false,
+                    scaleControl: false,
+                    scrollwheel: false,
+                    center: dhaka
+                });
+                var marker = new google.maps.Marker({
+                    position: dhaka,
+                    map: map
+                });
+            }
+        </script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyr2hhQZy405_olEbQnaAh-dA3wPoHMFg&callback=initMap">
+        </script>   
+    </div>
+</template>
+
+
+<template name="User_thumbnail">
+    <div class="user-thumbnail">
+        {{#with userProfile}}
+            <img src="img/user.jpg" class="profile-pic" alt="">
+            <p><a href="#">{{name}}</a></p>
+        {{/with}}
+    </div>        
+</template>
+
+
+<template name="Similar_listing">
+    <div class="similar-listing">
+        <h4>Similar Listings</h4>
+        <hr>
+        <div class="row">
+            {{#each similarPosts}}                                       
+                <div class="col-md-4">
+                    {{> Airbnb_list_card}}                                 
+                </div>
+            {{/each}}        
+        </div>            
+        <script>
+            $('.owl-carousel').owlCarousel({
+                items: 1,
+                loop: true,
+                nav: true,
+                lazyLoad: true,
+                navText: ['']
+            });
+        </script>                         
+    </div>  
+</template>

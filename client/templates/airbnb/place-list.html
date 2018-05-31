@@ -1,0 +1,68 @@
+<template name="Airbnb_list">
+    <!-- {{> Nav_bottom}} -->
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="list">
+                    <div class="list-wrapper">
+                        <div class="list-wrapper-inside">
+                            <!-- {{> Airbnb_list_topbar}} -->
+                            <div class="list-card-wrapper">
+                                <div class="row">
+                                    {{#each places}}
+                                        <div class="col-md-3">
+                                            {{> Airbnb_list_card}}             
+                                        </div>
+                                        <script>
+                                            $('.owl-carousel').owlCarousel({
+                                                items: 1,
+                                                loop: true,
+                                                nav: true,
+                                                lazyLoad: true,
+                                                navText: ['']
+                                            });
+                                        </script>
+                                    {{/each}}
+                                                
+                                </div>
+                            </div> 
+                            
+                        </div>
+                        <!-- {{> Airbnb_pagination}} -->
+                        {{> Airbnb_footer}}}
+                    </div>               
+                </div>
+                <!-- <div class="map">
+                    {{> Airbnb_list_map}}
+                </div> -->
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="Airbnb_list_card">
+    <div class="airbnb-list-card">
+        <div class="slider">
+            <span class="favorite"><i class="fa fa-heart-o fa-2x"></i></span>
+            <div class='owl-carousel'>                
+                {{#each pictures}}
+                    <div><img src="http://localhost:3000/cdn/storage/Images/{{filename}}/original/{{filename}}.png" width="100%" alt=""></div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="location">
+            <span><strong><a href="#">{{defaultPrice}} {{currency}}</a><span class="badge-rating"><a href=""><i class="fa fa-flash"></i></a></span></strong></span>
+            <strong><small><span class="pull-right">{{> rating}} </span></small></strong>            
+        </div>
+        <!-- <div class="content">
+            <strong><h5><a href="{{pathFor '/places/:id' id=_id}}">{{placeName}}</a></h5></strong>
+            <p>{{placeType}}/{{propertyType}} · {{numberOfBeds}} bed · {{numberOfGuests}} guests {{#if $eq isBusinessReady 'TRUE'}} · Business Travel Ready {{/if}}</p>
+        </div> -->
+    </div>
+</template>
+
+<template name="rating">
+    <span class="rating">
+        <span></span><span></span><span></span><span></span><span></span>
+    </span>
+</template>

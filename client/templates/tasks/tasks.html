@@ -1,0 +1,27 @@
+<template name="Tasks">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1>Tasks</h1>
+                <hr>                
+                <form class="new-task">                    
+                    <label for="text">Enter a Task:</label>
+                    <input type="text" class="form-control" id="text" name="text" placeholder="Type to add new tasks" />                    
+                </form>
+                <ul class="tasks">
+                    {{#each tasks}}
+                        {{> task}}
+                    {{/each}}
+                </ul>            
+            </div>
+        </div>    
+    </div>
+</template>
+
+<template name="task">
+    <li>
+        <input checked="{{checked}}" class="toggle-checked" type="checkbox">
+        <span>{{text}}</span>
+        <button class="btn btn-danger delete"><i class="fa fa-times"></i></button>
+    </li>     
+</template>
