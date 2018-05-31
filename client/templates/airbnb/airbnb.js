@@ -32,12 +32,6 @@ Template.Airbnb_list.helpers({
     }
 });
 
-Template.Airbnb_list_topbar.helpers({
-    noOfPlaces(){
-        return Places.find({}).count();                  
-    },
-});
-
 Template.Place_detail.helpers({
 
     places(){
