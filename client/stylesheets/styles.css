@@ -414,3 +414,9 @@ span.date{
     right: 25px;
     top: 0;
 }
+
+/* ==========================User Details ==================== */
+
+.user-passport{
+    text-align: center;
+}

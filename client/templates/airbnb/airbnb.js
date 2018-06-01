@@ -19,7 +19,7 @@ Template.Place_detail.events({
       placeId = FlowRouter.getParam("_id");
       if(confirm("Do you really want to delete this post?")){
         Meteor.call('deletePlace', placeId);  
-        toastr.success('Listing Deleted Succesfully!');                    
+        toastr.success('Project Deleted Succesfully!');                    
       };
   }
 });

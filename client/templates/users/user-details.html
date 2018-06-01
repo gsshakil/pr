@@ -1,0 +1,62 @@
+<template name="User_details">
+    <div class="wrapper">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="user-passport p-a-md">
+                    <div class="profile-pic">
+                        <div class="profile-pic">
+                            <img src="img/user.jpg" class="profile-pic" alt="">
+                        </div>
+                        {{#with profile}}                                               
+                            <h4><a href="{{pathFor 'user-details'}}">{{name}}</a></h4>                
+                        {{/with}}
+                        <span>Designation</span>
+                        <br>
+                        <span>Location</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="user-projects p-a-md">
+                    <div class="row">
+                        {{#each project}}
+                            <div class="col-md-4">
+                                {{> Project_card}}             
+                            </div>
+                            <script>
+                                $('.owl-carousel').owlCarousel({
+                                    items: 1,
+                                    loop: true,
+                                    nav: true,
+                                    lazyLoad: true,
+                                    navText: ['']
+                                });
+                            </script>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="Project_card">
+    <div class="airbnb-list-card">
+        <div class="slider">
+            <span class="favorite"><i class="fa fa-heart-o fa-2x"></i></span>
+            <div class='owl-carousel'>                
+                {{#each pictures}}
+                    <div><img src="http://localhost:3000/cdn/storage/Images/{{filename}}/original/{{filename}}.png" width="100%" alt=""></div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="location">
+            <span><strong><a href="{{pathFor '/places/:id' id=_id}}">{{placeName}}</a><span class="badge-rating"><a href=""><i class="fa fa-flash"></i></a></span></strong></span>
+            <strong><small><span class="pull-right">{{> rating}} </span></small></strong>            
+        </div>
+        <!-- <div class="content">
+            <strong><h5><a href="{{pathFor '/places/:id' id=_id}}">{{placeName}}</a></h5></strong>
+            <p>{{placeType}}/{{propertyType}} · {{numberOfBeds}} bed · {{numberOfGuests}} guests {{#if $eq isBusinessReady 'TRUE'}} · Business Travel Ready {{/if}}</p>
+        </div> -->
+    </div>
+</template>

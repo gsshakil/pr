@@ -1,0 +1,46 @@
+<template name="People_list">
+    <div class="wrapper">
+        <div class="jumborton">
+            <h3>Meet Creative Professionals</h3>
+        </div>
+        <div class="container">
+            <div class="row m-t-md">
+                <div class="col-md-4">
+                    <div class="filter">
+                        <input type="text" class="form-control m-b-sm" placeholder="Enter Keywords">
+                        <input type="text" class="form-control m-b-sm" placeholder="Enter Specialities">
+                        <input type="text" class="form-control m-b-sm" placeholder="Enter Location">
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-4">
+                            {{> People_card}}
+                        </div>
+                        <div class="col-md-4">
+                            {{> People_card}}
+                        </div>
+                        <div class="col-md-4">
+                            {{> People_card}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>    
+
+
+<template name="People_card">
+    <div class="people-card">
+        <div class="profile-pic">
+            <img src="img/user.jpg" class="profile-pic" alt="">
+        </div>
+        {{#with profile}}                                               
+            <h4><a href="{{pathFor 'user-details'}}">{{name}}</a></h4>                
+        {{/with}}
+        <span>Designation</span>
+        <br>
+        <span>Location</span>
+    </div>
+</template>
