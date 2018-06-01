@@ -37,10 +37,10 @@
             <img src="img/user.jpg" class="profile-pic" alt="">
         </div>
         {{#with profile}}                                               
-            <h4><a href="{{pathFor 'user-details'}}">{{name}}</a></h4>                
-        {{/with}}
-        <span>Designation</span>
-        <br>
-        <span>Location</span>
+            <h4><a href="{{pathFor 'user-details' id=_id}}">{{name}}</a></h4>                
+            <span>{{designation}}</span>
+            <br>
+            <span>{{location}}</span>
+        {{/with}}        
     </div>
 </template>

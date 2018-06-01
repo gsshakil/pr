@@ -10,9 +10,17 @@
                             <label for="name"></label>                    
                             <input type="text" class="form-control" name="name" id="name" value="{{#with profile}}{{name}}{{/with}}" placeholder="Enter your name" required>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="about"></label>                    
                             <textarea class="form-control" rows="4" id="about" name="about" value="{{#with profile}}{{about}}{{/with}}" placeholder="Tell about yourself" required></textarea>
+                        </div> -->
+                        <div class="form-group">
+                            <label for="designation"></label>                    
+                            <input type="text" class="form-control" name="designation" id="designation" value="{{#with profile}}{{designation}}{{/with}}" placeholder="Enter your designation e.g: Architect, Photographer" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="location"></label>                    
+                            <input type="text" class="form-control" name="location" id="location" value="{{#with profile}}{{location}}{{/with}}" placeholder="Enter your location" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>

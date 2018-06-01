@@ -38,14 +38,16 @@ Template.Edit_profile.events({
         e.preventDefault();
 
         var name = e.target.name.value;
-        var about = e.target.about.value;
+        var designation = e.target.designation.value;
+        var location = e.target.location.value;
 
         Meteor.users.update({
             _id:Meteor.user()._id}, 
             { $set: {
                 profile: {
                     name: name,
-                    about: about,                 
+                    designation: designation,
+                    location: location,                 
                 }
             }
         }, function(err){
