@@ -12,10 +12,18 @@ Template.People_card.helpers({
     }
 });
 
+Template.People_list.helpers({
+    people(){
+        Meteor.subscribe('users');
+        return Meteor.users.find({},  { sort: { createdAt: -1 }});
+    }
+});
+
+
 Template.User_details.helpers({
     project(){
         Meteor.subscribe('places'); 
-        return Places.find({},  { sort: { createdAt: -1 }});          
+        return Places.find({userId: Meteor.user()._id},  { sort: { createdAt: -1 }});          
     }
 }); 
 
