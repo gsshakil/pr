@@ -1,0 +1,40 @@
+<template name="Job_list">
+    <div class="wrapper">
+        <div class="jumborton">
+            <h3>Discover Jobs</h3>
+            <a href="{{pathFor 'add-job'}}" class="btn btn-primary">Add a Job</a>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="job-filter m-t-md">
+                        <input type="text" class="form-control m-b-sm" placeholder="Enter Keywords">
+                        <input type="text" class="form-control m-b-sm" placeholder="Enter Specialities">
+                        <input type="text" class="form-control m-b-sm" placeholder="Enter Location">
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="job-list p-a-md">
+                        {{#each jobs}}
+                            {{> Job_card}}
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<template name="Job_card">
+    <div class="job-card">
+        <div class="row">
+            <div class="title">
+                <a href="{{pathFor '/jobs/:id' id=_id}}"><h4>{{jobRole}}</h4></a>
+                <p>{{companyName}}</p>
+                <p>{{description}}</p>    
+                <p class="job-location">{{jobLocation}}</p>                
+            </div>
+        </div>
+    </div>
+</template>

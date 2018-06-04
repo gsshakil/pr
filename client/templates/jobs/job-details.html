@@ -1,0 +1,31 @@
+<template name="Job_details">
+
+    {{#with jobs}}        
+        <div class="wrapper">
+            <div class="container">
+                <div class="row m-t-md m-b-md">
+                    <div class="col-md-8">
+                        <ul class="list-inline">
+                            {{#if currentUser}}                            
+                                <li class="pull-right"><a href="/update-job/{{_id}}" class="btn btn-default"><i class="fa fa-edit"></i></a>
+                                <a href="#" class="btn btn-danger btn-remove"><i class="fa fa-remove"></i></a></li> 
+                            {{/if}}
+                        </ul>
+                        <a href="{{jobLink}}"><h4>{{jobRole}}</h4></a>
+                        <p>{{companyName}}</p>
+                        <p>{{description}}</p>    
+                        <p class="job-location">{{jobLocation}}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="" class="btn btn-primary btn-job-apply">Apply</a>
+                    </div>
+                </div>
+
+                <!--Footer-->
+                {{> Airbnb_footer}}
+
+            </div>
+        </div>
+    {{/with}}                        
+    
+</template>

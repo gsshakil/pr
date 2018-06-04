@@ -420,3 +420,21 @@ span.date{
 .user-passport{
     text-align: center;
 }
+
+
+/* ========================== Jobs ==================== */
+
+.job-card{
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 15px 40px;
+}
+
+.job-card .job-location{
+    color: #9a9a9a;
+}
+
+.btn-job-apply{
+    width: 100%;
+}

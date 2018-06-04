@@ -2,10 +2,8 @@
     <!-- {{> Nav_bottom}} -->
     <div class="wrapper">
         <div class="jumborton">
-            <h3>Discover Inspirational Creative Works</h3>
-            {{#if currentUser}}            
-                <a href="{{pathFor 'add-list'}}" class="btn btn-primary">Submit Yours</a>
-            {{/if}}
+            <h3>Discover Inspirational Creative Works</h3>         
+            <a href="{{pathFor 'add-list'}}" class="btn btn-primary">Submit Yours</a>
         </div>
         <div class="container">
             <div class="row">
@@ -57,8 +55,8 @@
             </div>
         </div>
         <div class="location">
-            <span><strong><a href="{{pathFor '/projects/:id' id=_id}}">{{placeName}}</a><span class="badge-rating"><a href=""><i class="fa fa-flash"></i></a></span></strong></span>
-            <strong><small><span class="pull-right">{{> rating}} </span></small></strong>            
+            <span><strong><a href="{{pathFor '/projects/:id' id=_id}}">{{placeName}}</a></strong></span>
+            <!-- <strong><small><span class="pull-right">{{> rating}} </span></small></strong>             -->
         </div>
         <!-- <div class="content">
             <strong><h5><a href="{{pathFor '/places/:id' id=_id}}">{{placeName}}</a></h5></strong>

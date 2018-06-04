@@ -55,8 +55,6 @@ Template.Place_detail.helpers({
     }
 });
 
-
-
 Template.User_thumbnail.helpers({
     userProfile(){
       return Meteor.user();

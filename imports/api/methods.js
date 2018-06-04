@@ -1,22 +1,6 @@
+import './jobs.js';
+
 Meteor.methods({
-
-    'insertTask'(text){
-        Tasks.insert({
-            text: text,
-            createdAt: new Date(), // current time
-            userId: Meteor.user()._id,
-        });
-    },
-
-    'updateTask'(taskId){
-        Tasks.update(taskId, {
-            $set: { checked: ! this.checked },
-        });    
-    },
-
-    'deleteTask'(taskId){
-        Tasks.remove(taskId);
-    },
      
     'insertPlace'(insertForm){
         Places.insert(insertForm);
@@ -31,6 +15,7 @@ Meteor.methods({
         FlowRouter.go('/places');        
     },
 
+    //Project Review
     'insertReview'(postId, text){
         Reviews.insert({
             userName: Meteor.user().profile.name,
@@ -49,7 +34,19 @@ Meteor.methods({
 
     'deleteReview'(id){
         Reviews.remove(id);        
-    }
+    },
 
+    //Jobs
+    'insertJob'(insertForm){
+        Jobs.insert(insertForm);
+    },
 
+    'updateJob'(doc, jobId){      
+        Jobs.update({ _id: jobId }, doc);
+    },
+
+    'deleteJob'(jobId){
+        Jobs.remove(jobId);
+        FlowRouter.go('/jobs');        
+    },
 });
