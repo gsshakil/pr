@@ -1,5 +1,9 @@
 import '../../../imports/api/jobs.js';
 
+Template.body.onCreated(function bodyOnCreated() {
+    Meteor.subscribe('jobs');  
+});
+
 // Display Jobs List
 Template.Job_list.helpers({
     jobs(){
