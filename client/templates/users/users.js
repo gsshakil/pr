@@ -8,7 +8,7 @@ Template.Edit_profile.helpers({
 Template.People_card.helpers({
     profile(){
         Meteor.subscribe('users');        
-        return Meteor.users.findOne({_id: Meteor.user()._id}).profile;  
+        return Meteor.users.findOne({_id: this._id}).profile;  
     }
 });
 
@@ -22,8 +22,14 @@ Template.People_list.helpers({
 
 Template.User_details.helpers({
     project(){
-        Meteor.subscribe('places'); 
-        return Places.find({userId: Meteor.user()._id},  { sort: { createdAt: -1 }});          
+        Meteor.subscribe('places');
+        id = FlowRouter.getParam("_id");                 
+        return Places.find({userId: id},  { sort: { createdAt: -1 }});          
+    },
+    profile(){
+        Meteor.subscribe('users');
+        id = FlowRouter.getParam("_id");        
+        return Meteor.users.findOne({_id: id}).profile;  
     }
 }); 
 
@@ -33,13 +39,6 @@ Template.Project_card.helpers({
         return Places.find({},  { sort: { createdAt: -1 }});          
     }
 }); 
-
-Template.User_details.helpers({
-    profile(){
-        Meteor.subscribe('users');        
-        return Meteor.users.findOne({_id: Meteor.user()._id}).profile;  
-    }
-});
 
 Template.Edit_profile.events({
     'submit .update-profile'(e){
