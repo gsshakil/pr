@@ -6,9 +6,9 @@ Template.Edit_profile.helpers({
 });
 
 Template.People_card.helpers({
-    profile(){
+    user(){
         Meteor.subscribe('users');        
-        return Meteor.users.findOne({_id: this._id}).profile;  
+        return Meteor.users.findOne({_id: this._id});  
     }
 });
 
